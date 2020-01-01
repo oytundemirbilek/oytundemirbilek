@@ -10,7 +10,9 @@ def create_hash(password):
 def home_page():
     client_ip = request.environ.get('REMOTE_ADDR')
     ip_data = pd.read_csv('ip_address.csv')
-    
+    new_ip_list = [client_ip, 1]
+    for item in new_ip_list:
+        print(item)
     if ip_data.empty:
         ip_data = pd.DataFrame([[client_ip, 1]], columns=['IP ADDRESS','COUNT'])
     else:
@@ -75,9 +77,9 @@ def get_uni():
 
 def create_app():
     app = Bottle()
-    app.route("/", "GET", home_page)
+    app.route("/home", "GET", home_page)
     app.route("/register", "GET", register)
-    app.route("/overview", "GET", about)
+    app.route("/", "GET", about)
     app.route("/projects", "GET", project_page)
     app.route("/contact", "GET", contact_page)
     app.route("/create", "POST", create_user)
