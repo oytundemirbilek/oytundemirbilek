@@ -1,7 +1,11 @@
 import os
 import pandas as pd
 from bottle import Bottle, run, route, template, static_file, request, get
+from hashlib import sha256
 
+def create_hash(password):
+    pw_bytestring = password.encode()
+    return sha256(pw_bytestring).hexdigest()
 
 def home_page():
     client_ip = request.environ.get('REMOTE_ADDR')
@@ -20,15 +24,30 @@ def home_page():
     ip_data.to_csv('ip_address.csv', index = False)
     return ip_data.to_html()
 
-def register():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
+def create_user():
+    username = request.forms.get('username')
+    email = request.forms.get('email')
+    password = create_hash(request.forms.get('password'))
 
-        return "Success"
+    user_data = pd.read_csv('users.csv')
+    
+    if user_data.empty:
+        user_data = pd.DataFrame([[username, email, password]], columns=['USERNAME','EMAIL','PASSWORD'])
     else:
-        return template('./static/register')
+        filtering = user_data['USERNAME'] == username
+        if user_data[filtering].empty:
+            add = pd.DataFrame([[username, email, password]], columns=['USERNAME','EMAIL','PASSWORD'])
+            user_data = user_data.append(add, ignore_index=True)
+        else:
+            return "This username exists."
+
+    user_data.to_csv('users.csv', index = False)
+    print(username,email,password)
+    return "Success"
+
+
+def register():
+    return template('./static/register')
 
 def about():
     return static_file("index.html", root='./static')
@@ -61,6 +80,7 @@ def create_app():
     app.route("/overview", "GET", about)
     app.route("/projects", "GET", project_page)
     app.route("/contact", "GET", contact_page)
+    app.route("/create", "POST", create_user)
     app.route("/server/index.css", "GET", get_style)
     app.route("/server/ai.png", "GET", get_banner)
     app.route("/server/pp.png", "GET", get_profile)
