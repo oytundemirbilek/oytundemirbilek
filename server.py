@@ -7,7 +7,7 @@ def create_hash(password):
     pw_bytestring = password.encode()
     return sha256(pw_bytestring).hexdigest()
 
-def home_page():
+def ip_handler():
     client_ip = request.environ.get('REMOTE_ADDR')
     ip_data = pd.read_csv('ip_address.csv')
     new_ip_list = [client_ip, 1]
@@ -48,16 +48,13 @@ def create_user():
     return "Success"
 
 
-def register():
-    return template('./static/register')
-
 def about():
     return static_file("index.html", root='./static')
 
 def project_page():
     return template('./static/projects')
 
-def contact_page():
+def clustering_main():
     return template('./static/contact')
 
 @route('/static/<path:path>')
@@ -77,12 +74,10 @@ def get_uni():
 
 def create_app():
     app = Bottle()
-    app.route("/home", "GET", home_page)
-    app.route("/register", "GET", register)
     app.route("/", "GET", about)
     app.route("/projects", "GET", project_page)
-    app.route("/contact", "GET", contact_page)
-    app.route("/create", "POST", create_user)
+    app.route("/demo", "GET", clustering_main)
+    #app.route("/create", "POST", create_user)
     app.route("/server/index.css", "GET", get_style)
     app.route("/server/ai.png", "GET", get_banner)
     app.route("/server/pp.png", "GET", get_profile)
