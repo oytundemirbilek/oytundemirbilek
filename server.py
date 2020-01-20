@@ -55,7 +55,7 @@ def project_page():
     return template('./static/projects')
 
 def clustering_main():
-    return template('./static/contact')
+    return template('./static/demo')
 
 @route('/static/<path:path>')
 def server_static(path):
