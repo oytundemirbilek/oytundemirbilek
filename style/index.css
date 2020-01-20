@@ -62,12 +62,14 @@ body{
 }
 
 .sidenav {
-    height: 100%;
-    width: 25%;
+    height: inherit;
+    width: 15%;
     left: 0;
     background-color: rgb(2, 2, 39);
     overflow-x: hidden;
     float: left;
+    padding: 5%;
+
   }
   
   .sidenav a {
@@ -85,23 +87,24 @@ body{
     color: black;
     font-size: 15px;
     position: relative;
-    padding: 5%;
+    padding: 4%;
     border: 3px solid black;
-    margin-left: auto;
-    margin-right: auto;
     float: left;
-    width:40%;
+    width: 39.5%;
+    height: inherit;
+    margin: 1%;
 }
 h2{
     color: darkred;
 }
 .itulogo{
-    float: left;
+    float: right;
     position: relative;
-    width:15%;
+    width: 19%;
     margin-top:3%;
     margin-left:3%;
     margin-right:3%;
+    height: inherit;
 }
 #itu{
     width:100%;
@@ -112,6 +115,9 @@ h2{
     width:10%;
     height: auto;
     margin:auto;
+}
+.nonbanner{
+    height: inherit;
 }
 .nonbanner:after {
     content: "";
