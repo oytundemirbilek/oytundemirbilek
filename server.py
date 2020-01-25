@@ -9,7 +9,7 @@ def create_hash(password):
 
 def ip_handler():
     client_ip = request.environ.get('REMOTE_ADDR')
-    ip_data = pd.read_csv('ip_address.csv')
+    ip_data = pd.read_csv('./data/ip_address.csv')
     new_ip_list = [client_ip, 1]
     for item in new_ip_list:
         print(item)
@@ -31,7 +31,7 @@ def create_user():
     email = request.forms.get('email')
     password = create_hash(request.forms.get('password'))
 
-    user_data = pd.read_csv('users.csv')
+    user_data = pd.read_csv('./data/users.csv')
     
     if user_data.empty:
         user_data = pd.DataFrame([[username, email, password]], columns=['USERNAME','EMAIL','PASSWORD'])
@@ -43,7 +43,7 @@ def create_user():
         else:
             return "This username exists."
 
-    user_data.to_csv('users.csv', index = False)
+    user_data.to_csv('./data/users.csv', index = False)
     print(username,email,password)
     return "Success"
 
