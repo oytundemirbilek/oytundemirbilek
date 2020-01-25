@@ -101,7 +101,8 @@ h2{
 }
 .itulogo{
     float: right;
-    position: relative;
+    position: fontrelative;
+    font-family: "Times New Roman";
     width: 19%;
     margin-top:3%;
     margin-left:3%;
@@ -127,3 +128,6 @@ h2{
     clear: both;
   }
 
+.contact{
+    font-family: "Times New Roman";
+}
