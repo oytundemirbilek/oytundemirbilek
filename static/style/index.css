@@ -45,6 +45,7 @@ body{
      left: 48%;
      transform: translate(-50%, -50%);
      color: white;
+     font-family: "Times New Roman";
      margin:3%;
  }
  hr{
@@ -83,7 +84,7 @@ body{
     color: white;
   }
 .content{
-    font-family: monospace;
+    font-family: "Times New Roman";
     color: black;
     font-size: 15px;
     position: relative;
@@ -95,7 +96,7 @@ body{
     margin: 1%;
 }
 h2{
-    color: darkred;
+    font-family: "Times New Roman";
 }
 .itulogo{
     float: right;
