@@ -32,16 +32,14 @@
       <article class="content">
 
         <h2>Select a sample model and run:</h2>
-        
-        <select name="models" form="modelform">
-          <option value="clf">Classification</option>
-          <option value="reg">Regression</option>
-          <option value="clu">Clustering</option>
-        </select>
-
-
-        
-
+        <form action="/demo" id="modelform" method="POST">
+          <select name="model">
+            <option value="clf">Classification</option>
+            <option value="reg">Regression</option>
+            <option value="clu">Clustering</option>
+          </select>
+          <input type="submit" value="Train the Model">
+        </form>
 
         <h2>Pulsar Star Classification</h2>
         <p></p>

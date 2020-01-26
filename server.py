@@ -96,7 +96,7 @@ def create_app():
     app.route("/demo", "GET", demo_input_page)
 
     #User inputs for models
-    #app.route("/demo", "POST", create_mlrequest)
+    app.route("/demo", "POST", create_mlrequest)
 
     #Model Training Outputs
     app.route("/demo/pulsarclassifier", "GET", run_pulsar)
