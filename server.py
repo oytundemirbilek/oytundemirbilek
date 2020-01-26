@@ -53,19 +53,19 @@ def about():
     return static_file("index.html", root='./static')
 
 def project_page():
-    return template('./static/projects')
+    return static_file("projects.html", root='./static')
 
 def demo_input_page():
-    return template('./static/demo')
+    return static_file("demo.html", root='./static')
 
 
 def create_mlrequest():
     selected_model = request.forms.get('model')
     if selected_model=='clf':
-        results, data = pulsar_classifier()
+        results, data, legend = pulsar_classifier()
         
         f = open("./static/demoresult.html", "r")
-        html = f.read().format(score=results['score'], output1=results['output'], datatable=data)
+        html = f.read().format(score=results['score'], output1=results['output'], datatable=data, legendtable=legend)
         return html
     if selected_model=='reg':
         results = pulsar_classifier()
