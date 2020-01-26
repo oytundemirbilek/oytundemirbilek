@@ -6,6 +6,8 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 
+pd.set_option('colheader_justify', 'center')
+
 def plot(Xtest, ytest, index_max, preds, model):
     fig = plt.figure()
 
@@ -43,6 +45,7 @@ def renaming(df):
 
 def pulsar_classifier():
     df = pd.read_csv('./data/pulsar_stars.csv')
+    df = df.round(3)
     data_matrix = df.drop('target_class', axis=1).values
     data_labels = df['target_class'].values
     Xtrain, Xtest, ytrain, ytest = train_test_split(data_matrix, data_labels, test_size = 0.1)
