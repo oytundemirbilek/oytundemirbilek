@@ -60,16 +60,20 @@ def demo_input_page():
 
 
 def create_mlrequest():
-    variable = request.forms.get('model')
-    print(variable)
-    return variable
-
-
-def run_pulsar():
-    pulsar_classifier()
-    return template('./static/pulsarresults')
-
-
+    selected_model = request.forms.get('model')
+    if selected_model=='clf':
+        results, data = pulsar_classifier()
+        
+        f = open("./static/demoresult.html", "r")
+        html = f.read().format(score=results['score'], output1=results['output'], datatable=data)
+        return html
+    if selected_model=='reg':
+        results = pulsar_classifier()
+        return results
+    if selected_model=='clu':
+        results = pulsar_classifier()
+        return results
+#<img src="/server/plot.png" id="plot" alt="plot">
 
 
 
@@ -97,10 +101,6 @@ def create_app():
 
     #User inputs for models
     app.route("/demo", "POST", create_mlrequest)
-
-    #Model Training Outputs
-    app.route("/demo/pulsarclassifier", "GET", run_pulsar)
-
 
     #Include style and images
     app.route("/server/index.css", "GET", get_style)

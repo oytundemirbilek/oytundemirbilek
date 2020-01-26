@@ -23,5 +23,9 @@ def pulsar_classifier():
     f_importance = list(clf.feature_importances_)
     index_max = f_importance.index(max(f_importance))
 
-    print("F1Score of the predictions:", f1)
-    print("Most important feature:", df.columns[index_max])
+    #print("F1Score of the predictions: ", f1)
+    #print("Most important feature: ", df.columns[index_max])
+    return {'err': None, 
+            'score': 'F1 Score of the Model: ' + str(f1), 
+            'output': 'Most Important Feature: ' + df.columns[index_max]}, df.iloc[:15].to_html()
+
