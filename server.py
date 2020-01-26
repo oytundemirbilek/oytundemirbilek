@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from bottle import Bottle, run, route, template, static_file, request, get
 from hashlib import sha256
+from find_pulsars import pulsar_classifier
 
 def create_hash(password):
     pw_bytestring = password.encode()
@@ -54,8 +55,23 @@ def about():
 def project_page():
     return template('./static/projects')
 
-def clustering_main():
+def demo_input_page():
     return template('./static/demo')
+
+
+def create_mlrequest():
+    variable = request.forms.get('model')
+    print(variable)
+    return variable
+
+
+def run_pulsar():
+    pulsar_classifier()
+    return template('./static/pulsarresults')
+
+
+
+
 
 @route('/static/<path:path>')
 def server_static(path):
@@ -74,10 +90,19 @@ def get_uni():
 
 def create_app():
     app = Bottle()
+    #Sidenav Options
     app.route("/", "GET", about)
     app.route("/projects", "GET", project_page)
-    app.route("/demo", "GET", clustering_main)
-    #app.route("/create", "POST", create_user)
+    app.route("/demo", "GET", demo_input_page)
+
+    #User inputs for models
+    #app.route("/demo", "POST", create_mlrequest)
+
+    #Model Training Outputs
+    app.route("/demo/pulsarclassifier", "GET", run_pulsar)
+
+
+    #Include style and images
     app.route("/server/index.css", "GET", get_style)
     app.route("/server/ai.png", "GET", get_banner)
     app.route("/server/pp.png", "GET", get_profile)

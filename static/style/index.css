@@ -103,6 +103,9 @@ h2{
     float: right;
     position: fontrelative;
     font-family: "Times New Roman";
+    text-align: center;
+    color: black;
+    font-weight: normal;
     width: 19%;
     margin-top:3%;
     margin-left:3%;
@@ -127,7 +130,3 @@ h2{
     display: table;
     clear: both;
   }
-
-.contact{
-    font-family: "Times New Roman";
-}

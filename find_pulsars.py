@@ -25,6 +25,3 @@ def pulsar_classifier():
 
     print("F1Score of the predictions:", f1)
     print("Most important feature:", df.columns[index_max])
-
-
-pulsar_classifier()
