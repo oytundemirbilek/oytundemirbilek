@@ -64,7 +64,7 @@ def pulsar_classifier():
 
     output = {'err': None, 
             'score': 'F1 Score of the Model: ' + str(f1), 
-            'feature': 'Most Important Feature: ' + df.columns[index_max]
+            'feature': 'Most Important Feature: ' + df.columns[index_max],
             'output': ''}
     legendhtml = legend.to_html(classes='tablestyle')
     datahtml = df.iloc[:10].to_html(classes='tablestyle')
