@@ -18,19 +18,23 @@
       </div>
     </header>
 
-    <section class="nonbanner">
+    <section class="nonbanner" style="height: 150%;">
 
       <nav class="sidenav">
           <img src="/server/pp.png" id="pp" alt="Prague">
 
               <a href="/">About Me</a>
               <a href="projects">Projects</a>
-              <a href="demo">Sample Apps</a>
+              <a href="demo">Implementation</a>
 
       </nav>
 
       <article class="content">
-
+        <h2>Machine Learning Models</h2>
+        <p>There are 3 main branches in machine learning: Classification, Regression and Clustering.
+          This section is designed to show the most recent kind of implementations of the machine 
+          learning models. All you need to do is choose one of the model options and click run.
+        </p>
         <h2>Select a sample model and run:</h2>
         <form action="/demo" id="modelform" method="POST">
           <select name="model">
@@ -40,9 +44,34 @@
           </select>
           <input type="submit" value="Train the Model">
         </form>
-
+        <p>You can find more information below.
+        </p>
         <h2>Pulsar Star Classification</h2>
-        <p></p>
+        <p>In this work, we aimed to expect model to understand which features are effective as having a major impact
+          to decide about a space entity is a pulsar star or not. When the model is available to do that after training, we let it
+          to find all pulsar stars on testing data. We measure f1 score to ensure that the model is well trained and making
+          correct decisions.</br>
+        <h3>Methods</h3>
+          <ul>
+
+            <li>Cross Validation</br>
+            To obtain a well trained model, we will split data to 10 folds and choose 1 of them as testing data, then we do the
+            same thing for all folds. This helps us to see best and worst possible results. For more information, visit academics page.
+            </li>
+
+            <li>Decision Tree Classifier</br>
+            Decision trees are a flowchart like data structure having nodes as a tests on each attribute, it is one of the most
+            powerful and popular tools for binary classification tasks. For more information, visit academics page.
+            </li>
+
+            <li>F1 Score</br>
+              F1 score is a popular formula to measure the quality of a classification model. When the data includes imbalanced
+              numbers of classes(e.g. only 5% is a pulsar star), it is the reason we choose it over measuring accuracy. For more information, visit academics page.
+              </li>
+
+          </ul>
+          
+        </p>
         <h2>Sample Regression</h2>
         <p>Coming Soon!</p>
         <h2>Sample Clustering</h2>

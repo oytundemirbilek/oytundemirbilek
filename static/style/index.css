@@ -99,6 +99,9 @@ body{
 h2{
     font-family: "Times New Roman";
 }
+h3{
+    font-family: "Times New Roman";
+}
 .itulogo{
     float: right;
     position: fontrelative;
@@ -129,4 +132,25 @@ h2{
     content: "";
     display: table;
     clear: both;
-  }
+}
+
+.tablestyle {
+    font-size: 11pt; 
+    font-family: Arial;
+    border-collapse: collapse; 
+    border: 1px solid silver;
+
+}
+
+.tablestyle td, th {
+    padding: 5px;
+}
+
+.tablestyle tr:nth-child(even) {
+    background: #E0E0E0;
+}
+
+.tablestyle tr:hover {
+    background: silver;
+    cursor: pointer;
+}

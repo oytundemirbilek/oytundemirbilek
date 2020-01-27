@@ -65,7 +65,7 @@ def create_mlrequest():
         results, data, legend = pulsar_classifier()
         
         f = open("./static/demoresult.html", "r")
-        html = f.read().format(score=results['score'], output1=results['output'], datatable=data, legendtable=legend)
+        html = f.read().format(score=results['score'], output1=results['feature'], datatable=data, legendtable=legend)
         return html
     if selected_model=='reg':
         results = pulsar_classifier()

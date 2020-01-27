@@ -61,6 +61,12 @@ def pulsar_classifier():
     #plot(Xtest, ytest, index_max, preds, clf)
     print("F1Score of the predictions: ", f1)
     print("Most important feature: ", df.columns[index_max])
-    return {'err': None, 
+
+    output = {'err': None, 
             'score': 'F1 Score of the Model: ' + str(f1), 
-            'output': 'Most Important Feature: ' + df.columns[index_max]}, df.iloc[:15].to_html(), legend.to_html()
+            'feature': 'Most Important Feature: ' + df.columns[index_max]
+            'output': ''}
+    legendhtml = legend.to_html(classes='tablestyle')
+    datahtml = df.iloc[:10].to_html(classes='tablestyle')
+    return output, datahtml, legendhtml
+            
